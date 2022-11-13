@@ -24,5 +24,12 @@ def generate_pdf(data: InspectionPdfDTO):
   pdf.drawString(__mm_to_p(110), __mm_to_p(266) , '   Procuradoria-Geral de Justiça')
   pdf.drawString(__mm_to_p(110), __mm_to_p(260), 'Centro de Apoio Técnico - CEAT')
   pdf.drawString(__mm_to_p(110), __mm_to_p(255), '        Setor de Engenharia')
+
+  pdf.setFont("Helvetica-Bold", 14)
+  pdf.drawString(__mm_to_p(70), __mm_to_p(235), "Relatório de Vistoria")
+  pdf.setFont("Helvetica", 12)
+
+  pdf.drawString(__mm_to_p(30), __mm_to_p(220), f"Local: {getattr(data, 'local')}")
+  pdf.drawString(__mm_to_p(30), __mm_to_p(210), f"Data da Vistoria: {getattr(data, 'inspection_date')}")
   pdf.save()
 
