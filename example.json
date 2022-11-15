@@ -1,0 +1,26 @@
+{
+  "inspection_id": "ab03",
+  "local": "Rua Marechal Deodoro, 355, Rio Piracicaba/MG",
+  "inspection_date": "15/11/2022",
+  "content": [
+    {
+      "image_path": "https://static.hbt.triider.com.br/photos/project/medium/inicio-da-obra-1279133.jpg",
+      "description": "Iniciando preparação da base",
+      "coordinates": "-321931, 4334234"
+    },
+    {
+      "image_path": "https://images.unsplash.com/photo-1517089596392-fb9a9033e05b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80",
+      "description": "Preparação do solo - Visão panorâmica",
+      "coordinates": "-84359334, 932832"
+    },
+    {
+      "image_path": "https://images.unsplash.com/photo-1593012672015-4fabc32c67aa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80",
+      "description": "Fachada da casa, construção iniciada",
+      "coordinates": "-4329328, 98231273189"
+    }
+  ],
+  "inspector": {
+    "name": "Filipe Augusto Santos de Moura",
+    "role": "Desenvolvedor F05 - Dashboard"
+  }
+}
