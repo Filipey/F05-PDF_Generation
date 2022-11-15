@@ -12,12 +12,10 @@ PDF_TOP_SPACING = 8.10
 
 PDF_SIDE_INITIAL_VALUE = 25
 PDF_TOP_INITIAL_VALUE = 100
-
+PDF_BOTTOM_LIMIT = 160
 
 def __mm_to_p(mm):
   return mm / 0.352777
-
-PDF_BOTTOM_LIMIT = 160
 
 def __draw_header(pdf: canvas.Canvas):
   pdf.drawImage(MPMG_logo,__mm_to_p(PDF_SIDE_INITIAL_VALUE), __mm_to_p(265) , width=150, height=60)
@@ -39,6 +37,7 @@ def __draw_footer(pdf: canvas.Canvas):
   pdf.drawString(__mm_to_p(148), __mm_to_p(10), 'www.mpmg.mp.br')
   pdf.setFont("Helvetica", 12)
 
+#TO-DO: clickabe see on map with coordinates
 def __draw_content(pdf: canvas.Canvas, position: tuple, content: PdfPhoto):
   width = 400
   height = 200
@@ -55,7 +54,7 @@ def __draw_content(pdf: canvas.Canvas, position: tuple, content: PdfPhoto):
   pdf.rect(end_point_x, end_point_y, width, height/5)
   pdf.drawString(x + 4, end_point_y + 6, f"Descrição: {getattr(content, 'description')}")
   pdf.drawString(x + 4, end_point_y + 28, f"Coordenadas geográficas: {latitude}, {longitude}")
-  pdf.drawString(x + 200, end_point_y + 28, "(ver no mapa)")
+  pdf.drawString(x + 220, end_point_y + 28, "(ver no mapa)")
 
   pdf.setFont("Helvetica", 12)
 
