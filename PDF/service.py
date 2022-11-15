@@ -28,11 +28,11 @@ def __draw_header(pdf: canvas.Canvas):
 def __draw_footer(pdf: canvas.Canvas):
   page_num = pdf.getPageNumber()
   pdf.setFont("Helvetica-Bold", 8)
-  pdf.drawString(__mm_to_p(160), __mm_to_p(42), f'Página {page_num}')
-  pdf.line(__mm_to_p(20), __mm_to_p(40), __mm_to_p(180), __mm_to_p(40))
+  pdf.drawString(__mm_to_p(160), __mm_to_p(21), f'Página {page_num}')
+  pdf.line(__mm_to_p(20), __mm_to_p(20), __mm_to_p(180), __mm_to_p(20))
   pdf.setFont("Helvetica", 9)
-  pdf.drawString(__mm_to_p(45), __mm_to_p(35), 'Avenida Álvares Cabral, 1690. Bairro Santo Agostinho. Belo Horizonte/MG. CEP: 30170-008')
-  pdf.drawString(__mm_to_p(72), __mm_to_p(30), 'Telefone: (31) 3330-8283. E-mail: ceat@mpmg.mp.br. www.mpmg.mp.br')
+  pdf.drawString(__mm_to_p(45), __mm_to_p(15), 'Avenida Álvares Cabral, 1690. Bairro Santo Agostinho. Belo Horizonte/MG. CEP: 30170-008')
+  pdf.drawString(__mm_to_p(72), __mm_to_p(10), 'Telefone: (31) 3330-8283. E-mail: ceat@mpmg.mp.br. www.mpmg.mp.br')
 
 #TO-DO: Fix multiple contents draw on request
 def __draw_content(pdf: canvas.Canvas, position: tuple, content: PdfPhoto):
@@ -50,7 +50,7 @@ def __draw_content(pdf: canvas.Canvas, position: tuple, content: PdfPhoto):
   pdf.drawString(x + 4, end_point_y + 6, f"Descrição: {getattr(content, 'description')}")
   pdf.drawString(x + 4, end_point_y + 28, f"Coordenadas geográficas: {getattr(content, 'coordinates')}")
 
-  return end_point_x, end_point_y
+  return end_point_x, end_point_y - 400
 
 def __draw_comments(pdf: canvas.Canvas, inspector: Inspector):
   pdf.showPage()
@@ -66,7 +66,7 @@ def __draw_comments(pdf: canvas.Canvas, inspector: Inspector):
 
   pdf.line(__mm_to_p(50), __mm_to_p(140), __mm_to_p(150), __mm_to_p(140))
   pdf.drawString(__mm_to_p(70), __mm_to_p(135), f"{getattr(inspector, 'name')}")
-  pdf.drawString(__mm_to_p(60), __mm_to_p(130), f"{getattr(inspector, 'role')}")
+  pdf.drawString(__mm_to_p(70), __mm_to_p(130), f"{getattr(inspector, 'role')}")
 
 
 def generate_pdf(data: InspectionPdfDTO):
@@ -84,9 +84,10 @@ def generate_pdf(data: InspectionPdfDTO):
   pdf.drawString(__mm_to_p(30), __mm_to_p(210), f"Data da Vistoria: {getattr(data, 'inspection_date')}")
   entry_point = (__mm_to_p(35), __mm_to_p(130))
   end_point = (0, 0)
+  print(PDF_BOTTOM_LIMIT)
 
   for content in getattr(data, 'content'):
-    if end_point[0] >= PDF_BOTTOM_LIMIT: # Reset axis on new page
+    if end_point[1] <= PDF_BOTTOM_LIMIT and end_point[1] != 0: # Reset axis on new page
       pdf.showPage()
       __draw_header(pdf)
       __draw_footer(pdf)
